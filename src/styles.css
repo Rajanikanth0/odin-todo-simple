@@ -4,3 +4,15 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+
+.container {
+  width: 40rem;
+  margin: 0 auto;
+}
+
+.project {
+  font-size: 1.5rem;
+  padding: 1rem;
+
+  background-color: lightskyblue;
+}
