@@ -1,26 +1,21 @@
 import { createElement } from "../modules/utility.js";
 import { getStorageData } from "../modules/storage.js";
 
-function getProject() {
+function getProjectElement(project) {
   const p = createElement("p", {
     classes: ["project"],
-    text: "Project Alpha"
+    text: project.name
   });
 
   return p;
 }
 
-function getProjectsData() {
-  const data = getProjectsData();
-  console.log(data);
-}
-
 function renderProject() {
-  const array = new Array(4);
+  const projects = Object.values( getStorageData() );
   const box = document.createDocumentFragment();
 
-  for (const project of array) {
-    box.appendChild( getProject() );
+  for (const project of projects) {
+    box.appendChild( getProjectElement(project) );
   }
 
   const content = document.querySelector(".content");
