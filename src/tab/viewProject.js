@@ -31,6 +31,7 @@ function getTasks(project) {
 
     const input = createElement("input");
     input.setAttribute("type", "checkbox");
+    input.checked = data.done;
 
     const label = createElement("p", {
       text: data.name
