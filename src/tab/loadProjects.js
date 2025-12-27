@@ -12,14 +12,14 @@ function getProjectElement(project) {
 
 function renderProjects() {
   const projects = Object.values( getStorageData() );
-  const box = document.createDocumentFragment();
+  const projectLabels = createElement("div", { classes: ["projectLabels"] });
 
   for (const project of projects) {
-    box.appendChild( getProjectElement(project) );
+    projectLabels.appendChild( getProjectElement(project) );
   }
 
   const content = document.querySelector(".content");
-  content.appendChild(box);
+  content.appendChild(projectLabels);
 }
 
 export { renderProjects };
