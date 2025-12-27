@@ -1,4 +1,4 @@
-import { Project, Task } from "./project.js";
+import { Project, Task } from "../modules/project.js";
 
 // Define projects with their tasks
 const projectsData = [

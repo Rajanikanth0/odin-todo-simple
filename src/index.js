@@ -1,4 +1,6 @@
 import "./styles.css";
-import { addProjects } from "./modules/initialProjects.js";
+import { addProjects } from "./tab/initialProjects.js";
+import { renderProject } from "./tab/loadProjects.js";
 
-addProjects();
+// addProjects();
+renderProject();
