@@ -95,6 +95,8 @@ function toggleTaskStatus(e, projectData) {
   const taskObject = Task.getTaskPrototype(projectData.tasks[target.dataset.id]);
   taskObject.toggleStatus();
 
+  target.querySelector("input").checked = taskObject.done;
+
   projectObject.addTask(taskObject);
 }
 
