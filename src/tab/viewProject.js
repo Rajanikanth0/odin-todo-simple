@@ -44,24 +44,69 @@ function getTasks(project) {
   return tasks;
 }
 
+function renderCreateTask(e, projectData) {
+  const target = e.target;
+  const targetParent = target.parentElement;
+  targetParent.removeChild(target);
+
+  const input = createElement("input", { classes: ["createTaskInput"] });
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "Name..");
+  
+  const saveTaskButton = createElement("button", {
+    classes: ["saveTaskButton"],
+    text: "Save"
+  });
+
+  saveTaskButton.addEventListener("click", (e) => {
+    const inputValue = targetParent.querySelector(".createTaskInput").value;
+    if (!inputValue) return;
+    
+    const task = new Task(inputValue);
+
+    const projectObject = Project.getProjectPrototype(projectData);
+    projectObject.addTask(task);
+
+    renderViewProject(projectData);
+  });
+
+  targetParent.append(input, saveTaskButton);
+}
+
+function getCreateButton(projectData) {
+  const createTaskContainer = createElement("div", { classes: ["createTaskContainer"]});
+
+  const createTaskButton = createElement("button", {
+    classes: ["createTaskButton"],
+    text: "New Task"
+  });
+
+  createTaskButton.addEventListener("click", (e) => renderCreateTask(e, projectData));
+
+  createTaskContainer.appendChild(createTaskButton);
+  return createTaskContainer;
+}
+
+function toggleTaskStatus(e, projectData) {
+  const target = e.target.closest(".task");
+  if (!target) return;
+
+  const projectObject = Project.getProjectPrototype(projectData);
+  const taskObject = Task.getTaskPrototype(projectData.tasks[target.dataset.id]);
+  taskObject.toggleStatus();
+
+  projectObject.addTask(taskObject);
+}
+
 function renderViewProject(project) {
   const projectData = getProjectData(project);
   const tasks = getTasks(project);
-
-  const toggleTaskStatus = (e) => {
-    const target = e.target.closest(".task");
-    if (!target) return;
-
-    const projectObject = Project.getProjectPrototype(project);
-    const taskObject = Task.getTaskPrototype(project.tasks[target.dataset.id]);
-    taskObject.toggleStatus();
-
-    projectObject.addTask(taskObject);
-  }
-  tasks.addEventListener("click", toggleTaskStatus);
+  const createButton = getCreateButton(project);
+  
+  tasks.addEventListener("click", (e) => toggleTaskStatus(e, project));
 
   const viewProject = createElement("div", { classes: ["viewProject"]});
-  viewProject.append(projectData, tasks);
+  viewProject.append(projectData, tasks, createButton);
 
   const content = document.querySelector(".content");
   content.textContent = "";

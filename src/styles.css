@@ -5,6 +5,10 @@ html {
   box-sizing: inherit;
 }
 
+input, button {
+  font: inherit;
+}
+
 .container {
   width: 40rem;
   margin: 0 auto;
@@ -54,4 +58,9 @@ html {
 }
 .viewProject .task > * {
   margin: 0;
+}
+
+.createTaskContainer {
+  display: flex;
+  gap: 0.5rem;
 }
