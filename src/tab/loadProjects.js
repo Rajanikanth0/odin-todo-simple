@@ -1,4 +1,5 @@
 import { createElement } from "../modules/utility.js";
+import { getStorageData } from "../modules/storage.js";
 
 function getProject() {
   const p = createElement("p", {
@@ -7,6 +8,11 @@ function getProject() {
   });
 
   return p;
+}
+
+function getProjectsData() {
+  const data = getProjectsData();
+  console.log(data);
 }
 
 function renderProject() {
