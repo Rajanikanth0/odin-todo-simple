@@ -5,7 +5,7 @@ class Project {
     const project = new Project(
       obj.name,
       obj.description,
-      obj.data,
+      obj.date,
     );
     project.id = obj.id;
     project.done = obj.done;
