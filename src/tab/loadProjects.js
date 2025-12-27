@@ -10,7 +10,7 @@ function getProjectElement(project) {
   return p;
 }
 
-function renderProject() {
+function renderProjects() {
   const projects = Object.values( getStorageData() );
   const box = document.createDocumentFragment();
 
@@ -22,4 +22,4 @@ function renderProject() {
   content.appendChild(box);
 }
 
-export { renderProject };
+export { renderProjects };
