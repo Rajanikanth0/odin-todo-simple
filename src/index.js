@@ -4,13 +4,10 @@ import { renderProjects } from "./tab/loadProjects.js";
 import { renderViewProject } from "./tab/viewProject.js";
 import { getStorageData } from "./modules/storage.js";
 
-const data = getStorageData();
-
-if (!Object.keys(data).length) {
+if (!Object.keys( getStorageData() ).length) {
   // initial projects data into localStorage
   addProjects();
 }
-
 // render projects from localStorage
 renderProjects();
 
@@ -24,4 +21,7 @@ function renderProjectData(e) {
 }
 
 const content = document.querySelector(".content");
+const homeButton = document.querySelector(".home-button");
+
 content.addEventListener("click", renderProjectData);
+homeButton.addEventListener("click", renderProjects);
