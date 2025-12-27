@@ -6,6 +6,7 @@ function getProjectElement(project) {
     classes: ["project"],
     text: project.name
   });
+  p.setAttribute("data-id", project.id);
 
   return p;
 }
@@ -19,6 +20,7 @@ function renderProjects() {
   }
 
   const content = document.querySelector(".content");
+  content.textContent = "";
   content.appendChild(projectLabels);
 }
 

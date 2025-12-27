@@ -1,28 +1,28 @@
 import { createElement } from "../modules/utility.js";
 
-function getProjectData() {
+function getProjectData(project) {
   const projectData = createElement("div", { classes: ["projectData"] });
 
   const title = createElement("h1", {
     classes: ["title"],
-    text: "Project Alpha"
+    text: project.name
   });
   const description = createElement("p", {
     classes: ["description"],
-    text: "Internal dashboard for employee productivity."
+    text: project.description
   });
   const date = createElement("p", {
     classes: ["date"],
-    text: "20-02-2025"
+    text: project.date
   });
 
   projectData.append(title, description, date);
   return projectData;
 }
 
-function getTasks() {
+function getTasks(project) {
   const tasks = createElement("div", { classes: ["tasks"] });
-  const taskData = new Array(2);
+  const taskData = Object.values(project.tasks);
 
   for (const data of taskData) {
     const task = createElement("div", { classes: ["task"] });
@@ -31,7 +31,7 @@ function getTasks() {
     input.setAttribute("type", "checkbox");
 
     const label = createElement("p", {
-      text: "Develop authentication module"
+      text: data.name
     });
 
     task.append(input, label);
@@ -41,14 +41,15 @@ function getTasks() {
   return tasks;
 }
 
-function renderViewProject() {
-  const projectData = getProjectData();
-  const tasks = getTasks();
+function renderViewProject(project) {
+  const projectData = getProjectData(project);
+  const tasks = getTasks(project);
 
   const viewProject = createElement("div", { classes: ["viewProject"]});
   viewProject.append(projectData, tasks);
 
   const content = document.querySelector(".content");
+  content.textContent = "";
   content.appendChild(viewProject);
 }
 
