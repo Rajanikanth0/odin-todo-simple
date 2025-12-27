@@ -72,6 +72,14 @@ class Project {
 }
 
 class Task {
+  static getTaskPrototype(obj) {
+    const task = new Task(obj.name);
+    task.id = obj.id;
+    task.done = obj.done;
+
+    return task;
+  }
+
   constructor(name) {
     this.id = crypto.randomUUID();
     this.name = name;
@@ -85,6 +93,10 @@ class Task {
       name: this.name,
       done: this.done
     };
+  }
+
+  toggleStatus() {
+    this.done = !this.done;
   }
 }
 

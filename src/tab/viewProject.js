@@ -1,4 +1,5 @@
 import { createElement } from "../modules/utility.js";
+import { Project, Task } from "../modules/project.js";
 
 function getProjectData(project) {
   const projectData = createElement("div", { classes: ["projectData"] });
@@ -26,6 +27,7 @@ function getTasks(project) {
 
   for (const data of taskData) {
     const task = createElement("div", { classes: ["task"] });
+    task.setAttribute("data-id", data.id);
 
     const input = createElement("input");
     input.setAttribute("type", "checkbox");
@@ -44,6 +46,18 @@ function getTasks(project) {
 function renderViewProject(project) {
   const projectData = getProjectData(project);
   const tasks = getTasks(project);
+
+  const toggleTaskStatus = (e) => {
+    const target = e.target.closest(".task");
+    if (!target) return;
+
+    const projectObject = Project.getProjectPrototype(project);
+    const taskObject = Task.getTaskPrototype(project.tasks[target.dataset.id]);
+    taskObject.toggleStatus();
+
+    projectObject.addTask(taskObject);
+  }
+  tasks.addEventListener("click", toggleTaskStatus);
 
   const viewProject = createElement("div", { classes: ["viewProject"]});
   viewProject.append(projectData, tasks);
