@@ -91,15 +91,35 @@ button:active {
   font-size: 1.5rem;
 }
 
+.viewProject .tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .viewProject .task {
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 
-  padding: 0.5rem;
   background-color: rgb(255, 241, 215);
+  padding: 0.5rem;
+}
+
+.viewProject .taskContainer {
+  flex: 1;
+
+  display: flex;
+  gap: 0.5rem;
+  
   cursor: pointer;
 }
-.viewProject .task > * {
+
+.viewProject .removeTaskButton {
+  padding: 0.2rem 0.5rem;
+}
+
+.viewProject .taskContainer p {
   margin: 0;
 }
 
