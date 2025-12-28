@@ -58,7 +58,7 @@ function renderCreateTask(e, projectData) {
     text: "Save"
   });
 
-  saveTaskButton.addEventListener("click", (e) => {
+  saveTaskButton.addEventListener("click", () => {
     const inputValue = targetParent.querySelector(".createTaskInput").value;
     if (!inputValue) return;
     

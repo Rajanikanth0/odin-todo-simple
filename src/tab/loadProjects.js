@@ -3,13 +3,20 @@ import { getStorageData } from "../modules/storage.js";
 import { Project } from "../modules/project.js";
 
 function getProjectElement(project) {
+  const checkbox = createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.disabled = true;
+
   const p = createElement("p", {
     classes: ["project"],
     text: project.name
   });
   p.setAttribute("data-id", project.id);
 
-  return p;
+  const projectContainer = createElement("div", { classes: ["projectContainer"] });
+  projectContainer.append(checkbox, p);
+
+  return projectContainer;
 }
 
 function getFormData(e) {

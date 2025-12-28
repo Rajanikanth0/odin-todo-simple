@@ -40,15 +40,22 @@ button:active {
   gap: 1rem;
 }
 
-.projectLabels .project {
+.projectLabels .projectContainer {
   font-size: 1.5rem;
   padding: 0.5rem 1rem;
+
+  display: flex;
+  gap: 1rem;
 
   background-color: lightskyblue;
   cursor: pointer;
 }
 
-.projectLabels > * {
+.projectContainer input {
+  width: 1rem;
+}
+
+.projectContainer > * {
   margin: 0;
 }
 
