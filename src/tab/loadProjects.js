@@ -29,7 +29,7 @@ function getProjectElement(projectObject) {
   const projectContainer = createElement("div", { classes: ["projectContainer"] });
 
   if (projectObject.done) {
-    projectContainer.style.backgroundColor = "skyBlue";
+    projectContainer.style.backgroundColor = "lightseagreen";
   } else {
     projectContainer.style.backgroundColor = "white";
   }
