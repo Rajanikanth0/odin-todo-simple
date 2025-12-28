@@ -6,7 +6,7 @@ html {
 }
 
 input, button {
-  font: inherit;
+  font-family: inherit;
 }
 
 button {
@@ -46,6 +46,7 @@ button:active {
 
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
 
   border: thin solid royalblue;
   cursor: pointer;
@@ -53,6 +54,9 @@ button:active {
 
 .projectContainer input {
   width: 1rem;
+}
+.projectContainer .project {
+  flex: 1;
 }
 
 .projectContainer > * {
