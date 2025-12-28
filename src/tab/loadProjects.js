@@ -28,6 +28,7 @@ function getProjectForm() {
   const name = createElement("input");
   name.setAttribute("name", "name");
   name.setAttribute("placeholder", "Name...");
+  name.required = true;
 
   const description = createElement("input");
   description.setAttribute("name", "description");
