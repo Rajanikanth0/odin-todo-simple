@@ -9,16 +9,47 @@ input, button {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+
+  border: none;
+  padding: 0.5rem 1rem;
+  background-color: royalblue;
+  box-shadow: 0 0 0.2rem gray;
+  color: white;
+}
+button:active {
+  box-shadow: none;
+}
+
 .container {
   width: 40rem;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.projectLabels {
+  width: 30rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .projectLabels .project {
   font-size: 1.5rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 
   background-color: lightskyblue;
+  cursor: pointer;
+}
+
+.projectLabels > * {
+  margin: 0;
 }
 
 /* View Project */
@@ -55,6 +86,7 @@ input, button {
 
   padding: 0.5rem;
   background-color: rgb(255, 241, 215);
+  cursor: pointer;
 }
 .viewProject .task > * {
   margin: 0;
@@ -63,4 +95,14 @@ input, button {
 .createTaskContainer {
   display: flex;
   gap: 0.5rem;
+}
+
+.createProjectContainer > form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.createProjectContainer input {
+  padding: 0.5rem;
 }

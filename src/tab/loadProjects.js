@@ -81,10 +81,11 @@ function renderProjects() {
   for (const project of projects) {
     projectLabels.appendChild( getProjectElement(project) );
   }
+  projectLabels.appendChild(createButton);
 
   const content = document.querySelector(".content");
   content.textContent = "";
-  content.append(projectLabels, createButton);
+  content.append(projectLabels);
 }
 
 export { renderProjects };
