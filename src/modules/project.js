@@ -56,6 +56,14 @@ class Project {
     setStorageData(data);
   }
 
+  setStatus() {
+    const tasks = Object.values(this.tasks);
+    const result = tasks.every(task => task.done);
+
+    this.done = result;
+    this.addData();
+  }
+
   // Add a task to this project
   addTask(task) {
     this.tasks[task.id] = task.getData();

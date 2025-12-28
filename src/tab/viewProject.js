@@ -96,8 +96,9 @@ function toggleTaskStatus(e, projectData) {
   taskObject.toggleStatus();
 
   target.querySelector("input").checked = taskObject.done;
-
   projectObject.addTask(taskObject);
+
+  projectObject.setStatus();
 }
 
 function renderViewProject(project) {

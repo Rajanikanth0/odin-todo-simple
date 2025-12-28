@@ -6,6 +6,7 @@ function getProjectElement(project) {
   const checkbox = createElement("input");
   checkbox.type = "checkbox";
   checkbox.disabled = true;
+  checkbox.checked = project.done;
 
   const p = createElement("p", {
     classes: ["project"],
