@@ -110,6 +110,7 @@ button:active {
   gap: 0.5rem;
 }
 
+.createTaskContainer input,
 .createProjectContainer input {
   padding: 0.5rem;
 }

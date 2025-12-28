@@ -11,11 +11,11 @@ function getProjectElement(project) {
     classes: ["project"],
     text: project.name
   });
-  p.setAttribute("data-id", project.id);
 
   const projectContainer = createElement("div", { classes: ["projectContainer"] });
-  projectContainer.append(checkbox, p);
+  projectContainer.setAttribute("data-id", project.id);
 
+  projectContainer.append(checkbox, p);
   return projectContainer;
 }
 

@@ -12,7 +12,7 @@ if (!Object.keys( getStorageData() ).length) {
 renderProjects();
 
 function renderProjectData(e) {
-  const target = e.target.closest(".project");
+  const target = e.target.closest(".projectContainer");
   if (!target) return;
 
   const data = getStorageData();
