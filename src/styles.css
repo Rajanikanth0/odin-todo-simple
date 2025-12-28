@@ -47,7 +47,7 @@ button:active {
   display: flex;
   gap: 1rem;
 
-  background-color: lightskyblue;
+  border: thin solid royalblue;
   cursor: pointer;
 }
 

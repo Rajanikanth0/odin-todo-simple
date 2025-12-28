@@ -16,6 +16,12 @@ function getProjectElement(project) {
   const projectContainer = createElement("div", { classes: ["projectContainer"] });
   projectContainer.setAttribute("data-id", project.id);
 
+  if (project.done) {
+    projectContainer.style.backgroundColor = "skyBlue";
+  } else {
+    projectContainer.style.backgroundColor = "white";
+  }
+
   projectContainer.append(checkbox, p);
   return projectContainer;
 }
@@ -87,7 +93,10 @@ function renderProjects() {
   const createButton = getCreateButton();
 
   for (const project of projects) {
-    projectLabels.appendChild( getProjectElement(project) );
+    const projectObject = Project.getProjectPrototype(project);
+    projectObject.setStatus();
+
+    projectLabels.appendChild( getProjectElement(projectObject) );
   }
   projectLabels.appendChild(createButton);
 
