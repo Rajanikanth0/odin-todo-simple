@@ -2,27 +2,39 @@ import { createElement } from "../modules/utility.js";
 import { getStorageData } from "../modules/storage.js";
 import { Project } from "../modules/project.js";
 
-function getProjectElement(project) {
+function removeProject(e, projectObject) {
+  projectObject.removeData();
+  renderProjects();
+}
+
+function getProjectElement(projectObject) {
   const checkbox = createElement("input");
   checkbox.type = "checkbox";
   checkbox.disabled = true;
-  checkbox.checked = project.done;
+  checkbox.checked = projectObject.done;
 
   const p = createElement("p", {
     classes: ["project"],
-    text: project.name
+    text: projectObject.name
+  });
+  p.setAttribute("data-id", projectObject.id);
+
+  const removeProjectButton = createElement("button", {
+    classes: ["removeProjectButton"],
+    text: "Remove"
   });
 
-  const projectContainer = createElement("div", { classes: ["projectContainer"] });
-  projectContainer.setAttribute("data-id", project.id);
+  removeProjectButton.addEventListener("click", (e) => removeProject(e, projectObject));
 
-  if (project.done) {
+  const projectContainer = createElement("div", { classes: ["projectContainer"] });
+
+  if (projectObject.done) {
     projectContainer.style.backgroundColor = "skyBlue";
   } else {
     projectContainer.style.backgroundColor = "white";
   }
 
-  projectContainer.append(checkbox, p);
+  projectContainer.append(checkbox, p, removeProjectButton);
   return projectContainer;
 }
 
