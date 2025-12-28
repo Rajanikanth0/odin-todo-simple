@@ -21,9 +21,9 @@ function getProjectData(project) {
   return projectData;
 }
 
-function getTasks(project) {
+function getTasks(projectObject) {
   const tasks = createElement("div", { classes: ["tasks"] });
-  const taskData = Object.values(project.tasks);
+  const taskData = Object.values(projectObject.tasks);
 
   for (const data of taskData) {
     const task = createElement("div", { classes: ["task"] });
@@ -37,7 +37,23 @@ function getTasks(project) {
       text: data.name
     });
 
-    task.append(input, label);
+    const taskContainer = createElement("div", {classes: ["taskContainer"]});
+    taskContainer.addEventListener("click", (e) => toggleTaskStatus(e, projectObject));
+    
+    taskContainer.append(input, label);
+
+    const removeButton = createElement("button", {
+      classes: ["removeTaskButton"],
+      text: "Remove"
+    });
+    removeButton.addEventListener("click", () => {
+      console.log("removed.");
+      projectObject.removeTask(data);
+
+      renderViewProject(projectObject);
+    });
+
+    task.append(taskContainer, removeButton);
     tasks.appendChild(task);
   }
 
@@ -87,12 +103,11 @@ function getCreateButton(projectData) {
   return createTaskContainer;
 }
 
-function toggleTaskStatus(e, projectData) {
+function toggleTaskStatus(e, projectObject) {
   const target = e.target.closest(".task");
   if (!target) return;
 
-  const projectObject = Project.getProjectPrototype(projectData);
-  const taskObject = Task.getTaskPrototype(projectData.tasks[target.dataset.id]);
+  const taskObject = Task.getTaskPrototype(projectObject.tasks[target.dataset.id]);
   taskObject.toggleStatus();
 
   target.querySelector("input").checked = taskObject.done;
@@ -105,8 +120,6 @@ function renderViewProject(project) {
   const projectData = getProjectData(project);
   const tasks = getTasks(project);
   const createButton = getCreateButton(project);
-  
-  tasks.addEventListener("click", (e) => toggleTaskStatus(e, project));
 
   const viewProject = createElement("div", { classes: ["viewProject"]});
   viewProject.append(projectData, tasks, createButton);
